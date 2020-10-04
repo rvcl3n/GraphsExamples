@@ -21,7 +21,7 @@
             var nodeFour = new Node("Four");
             var nodeFive = new Node("Five");
 
-            graph.AddConnection(new Edge(nodeOne,nodeTwo));
+            graph.AddConnection(new Edge(nodeOne, nodeTwo));
             graph.AddConnection(new Edge(nodeOne, nodeThree));
             graph.AddConnection(new Edge(nodeTwo, nodeThree));
             graph.AddConnection(new Edge(nodeTwo, nodeFour));
