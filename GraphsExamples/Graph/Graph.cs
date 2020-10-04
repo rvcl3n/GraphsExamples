@@ -15,26 +15,32 @@ namespace GraphsExamples
 
         public void AddConnection(Edge edge)
         {
-            if(edges.Contains(edge))
+            try
             {
-                Console.WriteLine("This edge is already added");
-                return;
-            }
-
-            foreach (var edgeInGraph in edges)
-            {
-                if(
-                    (edgeInGraph.nodeA == edge.nodeA && edgeInGraph.nodeB == edge.nodeB)
-                    ||
-                    (edgeInGraph.nodeA == edge.nodeB && edgeInGraph.nodeB == edge.nodeA)
-                    )
+                if (edges.Contains(edge))
                 {
-                    Console.WriteLine($"This connection already exsists: {edge.nodeA.name} === {edge.nodeB.name}");
-                    return;
+                    throw new ExistingEdgeException("This edge is already added");
                 }
-            }
 
-            edges.Add(edge);
+                foreach (var edgeInGraph in edges)
+                {
+                    if (
+                        (edgeInGraph.nodeA == edge.nodeA && edgeInGraph.nodeB == edge.nodeB)
+                        ||
+                        (edgeInGraph.nodeA == edge.nodeB && edgeInGraph.nodeB == edge.nodeA)
+                        )
+                    {
+                        throw new ExistingEdgeException($"This connection already exsists: {edge.nodeA.name} === {edge.nodeB.name}");
+                    }
+                }
+
+                edges.Add(edge);
+            }
+            catch (ExistingEdgeException e)
+            {
+                Console.WriteLine(e.Message);
+                throw;
+            }
         }
 
         public void PrintGraph()

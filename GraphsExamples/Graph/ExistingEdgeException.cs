@@ -2,6 +2,7 @@
 
 namespace GraphsExamples
 {
+    [Serializable]
     public class ExistingEdgeException : Exception
     {
         public ExistingEdgeException()
