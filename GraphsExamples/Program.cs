@@ -29,7 +29,15 @@
             graph.AddConnection(new Edge(nodeFour, nodeFive));
 
             graph.PrintGraph();
+            try
+            {
+                graph.AddConnection(new Edge(nodeFour, nodeFive));
 
+            }
+            catch (System.Exception e)
+            {
+                System.Console.WriteLine(e.Message);
+            }
         }
     }
 }
