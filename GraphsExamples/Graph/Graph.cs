@@ -25,12 +25,12 @@ namespace GraphsExamples
                 foreach (var edgeInGraph in edges)
                 {
                     if (
-                        (edgeInGraph.nodeA == edge.nodeA && edgeInGraph.nodeB == edge.nodeB)
+                        (edgeInGraph.NodeA == edge.NodeA && edgeInGraph.NodeB == edge.NodeB)
                         ||
-                        (edgeInGraph.nodeA == edge.nodeB && edgeInGraph.nodeB == edge.nodeA)
+                        (edgeInGraph.NodeA == edge.NodeB && edgeInGraph.NodeB == edge.NodeA)
                         )
                     {
-                        throw new ExistingEdgeException($"This connection already exsists: {edge.nodeA.name} === {edge.nodeB.name}");
+                        throw new ExistingEdgeException($"This connection already exsists: {edge.NodeA.Name} === {edge.NodeB.Name}");
                     }
                 }
 
@@ -41,13 +41,17 @@ namespace GraphsExamples
                 Console.WriteLine(e.Message);
                 throw;
             }
+            catch
+            {
+                throw;
+            }
         }
 
         public void PrintGraph()
         {
             foreach (var edge in edges)
             {
-                Console.WriteLine(edge.nodeA.name +" === "+ edge.nodeB.name);
+                Console.WriteLine(edge.NodeA.Name +" === "+ edge.NodeB.Name);
             }
         }
     }

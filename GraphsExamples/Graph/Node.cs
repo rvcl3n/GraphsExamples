@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GraphsExamples
+﻿namespace GraphsExamples
 {
     class Node
     {
-        public string name;
+        public string Name { get; set; }
 
-        public int value;
+        public int Value { get; set; }
 
         public Node(string name)
         {
-            this.name = name;
-            this.value = 0;
+            this.Name = name;
+            this.Value = 0;
         }
     }
 }
