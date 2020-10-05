@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GraphsExamples
+﻿namespace GraphsExamples
 {
     class Edge
     {
-        public Node nodeA;
+        public Node NodeA { get; set; }
 
-        public Node nodeB;
+        public Node NodeB { get; set; }
 
-        public int value;
+        public int Value { get; set; }
 
         public Edge(Node nodeA, Node nodeB)
         {
-            this.nodeA = nodeA;
-            this.nodeB = nodeB;
-            this.value = 0;
+            this.NodeA = nodeA;
+            this.NodeB = nodeB;
+            this.Value = 0;
         }
 
     }
