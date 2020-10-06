@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace GraphsExamples
@@ -53,6 +54,25 @@ namespace GraphsExamples
             {
                 Console.WriteLine(edge.NodeA.Name +" === "+ edge.NodeB.Name);
             }
+        }
+
+        public List<Node> GetRelatedNodes(Node node) 
+        {
+            var relatedNodes = new List<Node>();
+
+            foreach (var edge in edges)
+            {
+                if(edge.NodeA == node && !relatedNodes.Contains(edge.NodeB))
+                {
+                    relatedNodes.Add(edge.NodeB);
+                }
+                if(edge.NodeB == node && !relatedNodes.Contains(edge.NodeA))
+                {
+                    relatedNodes.Add(edge.NodeA);
+                }
+            }
+
+            return relatedNodes;
         }
     }
 }
