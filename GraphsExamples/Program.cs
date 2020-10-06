@@ -1,4 +1,6 @@
-﻿namespace GraphsExamples
+﻿using System;
+
+namespace GraphsExamples
 {
     class Program
     {
@@ -34,10 +36,19 @@
                 graph.AddConnection(new Edge(nodeFour, nodeFive));
 
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
-                System.Console.WriteLine(e.Message);
+                Console.WriteLine(e.Message);
             }
+
+            var bfsResult = BFS.BFSFunc(graph, nodeOne);
+
+            foreach (var item in bfsResult)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            Console.ReadKey();
         }
     }
 }
