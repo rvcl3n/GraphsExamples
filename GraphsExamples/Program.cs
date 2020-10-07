@@ -41,9 +41,18 @@ namespace GraphsExamples
                 Console.WriteLine(e.Message);
             }
 
+            Console.WriteLine("//BFS");
             var bfsResult = BFS.BFSFunc(graph, nodeOne);
 
             foreach (var item in bfsResult)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            Console.WriteLine("//DFS");
+            var dfsResult = BFS.BFSFunc(graph, nodeOne);
+
+            foreach (var item in dfsResult)
             {
                 Console.WriteLine(item.Name);
             }
