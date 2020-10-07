@@ -8,8 +8,8 @@ namespace GraphsExamples
         {
             var visited = new HashSet<Node>();
 
-            /*if (!graph.Contains(start))
-                return visited;*/
+            if (!graph.Contains(start))
+                return visited;
 
             var queue = new Queue<Node>();
             queue.Enqueue(start);
