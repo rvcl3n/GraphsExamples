@@ -1,22 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace GraphsExamples
 {
-    class BFS
+    class DFS
     {
-        public static HashSet<Node> BFSFunc(Graph graph, Node start)
+        public HashSet<Node> DFSFunc(Graph graph, Node start)
         {
             var visited = new HashSet<Node>();
 
             if (!graph.Contains(start))
                 return visited;
 
-            var queue = new Queue<Node>();
-            queue.Enqueue(start);
+            var stack = new Stack<Node>();
+            stack.Push(start);
 
-            while (queue.Count > 0)
+            while (stack.Count > 0)
             {
-                var vertex = queue.Dequeue();
+                var vertex = stack.Pop();
 
                 if (visited.Contains(vertex))
                     continue;
@@ -25,7 +27,7 @@ namespace GraphsExamples
 
                 foreach (var neighbor in graph.GetRelatedNodes(vertex))
                     if (!visited.Contains(neighbor))
-                        queue.Enqueue(neighbor);
+                        stack.Push(neighbor);
             }
 
             return visited;

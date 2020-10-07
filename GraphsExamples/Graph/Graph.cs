@@ -74,5 +74,18 @@ namespace GraphsExamples
 
             return relatedNodes;
         }
+        
+        public bool Contains(Node node)
+        {
+            foreach (var edge in edges)
+            {
+                if(edge.NodeA == node || edge.NodeB == node)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
