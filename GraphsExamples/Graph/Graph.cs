@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GraphsExamples
 {
-    class Graph
+    public class Graph
     {
         List<Edge> edges;
 
@@ -75,7 +75,7 @@ namespace GraphsExamples
             return relatedNodes;
         }
         
-        public bool Contains(Node node)
+        public bool ContainsAndRelated(Node node)
         {
             foreach (var edge in edges)
             {

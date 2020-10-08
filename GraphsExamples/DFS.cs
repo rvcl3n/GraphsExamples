@@ -8,29 +8,29 @@ namespace GraphsExamples
     {
         public HashSet<Node> DFSFunc(Graph graph, Node start)
         {
-            var visited = new HashSet<Node>();
+            var visitedNodes = new HashSet<Node>();
 
-            if (!graph.Contains(start))
-                return visited;
+            if (!graph.ContainsAndRelated(start))
+                return visitedNodes;
 
             var stack = new Stack<Node>();
             stack.Push(start);
 
             while (stack.Count > 0)
             {
-                var vertex = stack.Pop();
+                var node = stack.Pop();
 
-                if (visited.Contains(vertex))
+                if (visitedNodes.Contains(node))
                     continue;
 
-                visited.Add(vertex);
+                visitedNodes.Add(node);
 
-                foreach (var neighbor in graph.GetRelatedNodes(vertex))
-                    if (!visited.Contains(neighbor))
+                foreach (var neighbor in graph.GetRelatedNodes(node))
+                    if (!visitedNodes.Contains(neighbor))
                         stack.Push(neighbor);
             }
 
-            return visited;
+            return visitedNodes;
         }
     }
 }
