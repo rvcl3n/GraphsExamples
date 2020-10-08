@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GraphsExamples
 {
-    class BFS
+    public class BFS
     {
         public static HashSet<Node> BFSFunc(Graph graph, Node start)
         {

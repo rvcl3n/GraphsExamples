@@ -1,6 +1,6 @@
 ﻿namespace GraphsExamples
 {
-    class Edge
+    public class Edge
     {
         public Node NodeA { get; set; }
 

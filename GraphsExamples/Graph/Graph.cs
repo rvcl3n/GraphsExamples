@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GraphsExamples
 {
-    class Graph
+    public class Graph
     {
         List<Edge> edges;
 
