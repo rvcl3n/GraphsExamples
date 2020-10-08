@@ -4,9 +4,9 @@ using System.Text;
 
 namespace GraphsExamples
 {
-    class DFS
+    public class DFS
     {
-        public HashSet<Node> DFSFunc(Graph graph, Node start)
+        public static HashSet<Node> DFSFunc(Graph graph, Node start)
         {
             var visitedNodes = new HashSet<Node>();
 

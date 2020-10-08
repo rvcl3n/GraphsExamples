@@ -50,7 +50,7 @@ namespace GraphsExamples
             }
 
             Console.WriteLine("//DFS");
-            var dfsResult = BFS.BFSFunc(graph, nodeOne);
+            var dfsResult = DFS.DFSFunc(graph, nodeOne);
 
             foreach (var item in dfsResult)
             {
