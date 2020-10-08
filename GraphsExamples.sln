@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphsExamples", "GraphsExamples\GraphsExamples.csproj", "{4AC7052C-1995-4132-B867-508C3351DF16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphsExamples", "GraphsExamples\GraphsExamples.csproj", "{4AC7052C-1995-4132-B867-508C3351DF16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphsExamples.Tests", "GraphsExamples.Tests\GraphsExamples.Tests.csproj", "{75C6A508-3DF9-40F0-8657-BFF18AB27F90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4AC7052C-1995-4132-B867-508C3351DF16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AC7052C-1995-4132-B867-508C3351DF16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AC7052C-1995-4132-B867-508C3351DF16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C6A508-3DF9-40F0-8657-BFF18AB27F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C6A508-3DF9-40F0-8657-BFF18AB27F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C6A508-3DF9-40F0-8657-BFF18AB27F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C6A508-3DF9-40F0-8657-BFF18AB27F90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
