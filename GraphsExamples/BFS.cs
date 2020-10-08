@@ -6,29 +6,29 @@ namespace GraphsExamples
     {
         public static HashSet<Node> BFSFunc(Graph graph, Node start)
         {
-            var visited = new HashSet<Node>();
+            var visitedNodes = new HashSet<Node>();
 
-            if (!graph.Contains(start))
-                return visited;
+            if (!graph.ContainsAndRelated(start))
+                return visitedNodes;
 
             var queue = new Queue<Node>();
             queue.Enqueue(start);
 
             while (queue.Count > 0)
             {
-                var vertex = queue.Dequeue();
+                var node = queue.Dequeue();
 
-                if (visited.Contains(vertex))
+                if (visitedNodes.Contains(node))
                     continue;
 
-                visited.Add(vertex);
+                visitedNodes.Add(node);
 
-                foreach (var neighbor in graph.GetRelatedNodes(vertex))
-                    if (!visited.Contains(neighbor))
+                foreach (var neighbor in graph.GetRelatedNodes(node))
+                    if (!visitedNodes.Contains(neighbor))
                         queue.Enqueue(neighbor);
             }
 
-            return visited;
+            return visitedNodes;
         }
     }
 }
