@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace GraphsExamples
 {
@@ -12,6 +10,28 @@ namespace GraphsExamples
         public Graph()
         {
             edges = new List<Edge>();
+        }
+
+        public int NodesCount 
+        {
+            get 
+            {
+                var nodes = new List<Node>();
+
+                foreach (var edge in edges)
+                {
+                    if(!nodes.Contains(edge.NodeA))
+                    {
+                        nodes.Add(edge.NodeA);
+                    }
+                    if (!nodes.Contains(edge.NodeB))
+                    {
+                        nodes.Add(edge.NodeB);
+                    }
+                }
+
+                return nodes.Count; 
+            }
         }
 
         public void AddConnection(Edge edge)
