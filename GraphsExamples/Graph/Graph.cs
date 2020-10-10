@@ -5,31 +5,19 @@ namespace GraphsExamples
 {
     public class Graph
     {
-        List<Edge> edges;
-
         public Graph()
         {
+            nodes = new List<Node>();
             edges = new List<Edge>();
         }
 
+        public List<Node> nodes { get; set; }
+        public List<Edge> edges { get; set; }
+
         public int NodesCount 
         {
-            get 
+            get
             {
-                var nodes = new List<Node>();
-
-                foreach (var edge in edges)
-                {
-                    if(!nodes.Contains(edge.NodeA))
-                    {
-                        nodes.Add(edge.NodeA);
-                    }
-                    if (!nodes.Contains(edge.NodeB))
-                    {
-                        nodes.Add(edge.NodeB);
-                    }
-                }
-
                 return nodes.Count; 
             }
         }
