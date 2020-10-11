@@ -58,7 +58,7 @@ namespace GraphsExamples
             printSolution(dist);
         }
 
-        public void DijkstraFunc(Graph graph, Node start)
+        public static void DijkstraFunc(Graph graph, Node start)
         {
             //arrays init
             //int[] distance = new int[graph.NodesCount];
@@ -76,17 +76,18 @@ namespace GraphsExamples
             foreach (var node in graph.nodes)
             {
                 Node nearestNode = MinimalDistance(graph.nodes, distance, shortestPathTreeSet);
+                shortestPathTreeSet[nearestNode] = true;
 
                 foreach(var node2 in graph.nodes)
                 {
-                    if (shortestPathTreeSet[node2] && IsNodesConnected(graph.edges,node2,nearestNode) && distance[node] != int.MaxValue && distance[node] + GetDistance(graph.edges, node2, nearestNode) < distance[node])
+                    if (!shortestPathTreeSet[node2] && IsNodesConnected(graph.edges,node2,nearestNode) && distance[node] != int.MaxValue && distance[node] + GetDistance(graph.edges, node2, nearestNode) < distance[node2])
                     {
-                        distance[node] = distance[node] + GetDistance(graph.edges, node2, nearestNode);
+                        distance[node2] = distance[node] + GetDistance(graph.edges, node2, nearestNode);
                     }
                 }
             }
 
-            //ToDo: Print Function
+            Print(distance);
 
         }
 
@@ -133,6 +134,14 @@ namespace GraphsExamples
                 }
             }
             return distance;
+        }
+
+        private static void Print(Dictionary<Node, int> distance)
+        {
+            foreach (var node in distance)
+            {
+                Console.WriteLine($"Node: {node.Key.Name} - Distance: {node.Value}");
+            }
         }
     }
 }
