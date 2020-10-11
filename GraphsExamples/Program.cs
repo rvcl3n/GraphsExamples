@@ -6,14 +6,45 @@ namespace GraphsExamples
     {
         static void Main()
         {
-            /*int[,] graphArray = new int[,]  { { 0, 4, 5, 0, 0 },
+            int[,] graphArray = new int[,]  { { 0, 4, 5, 0, 0 },
                                                 { 4, 0, 3, 0, 0 },
                                                 { 5, 3, 0, 9, 0 },
                                                 { 0, 9, 0, 0, 2 },
                                                 { 0, 0, 0, 2, 0 } };
 
             var d = new Dijkstra();
-            d.dijkstra(graphArray, 0);*/
+            d.dijkstra(graphArray, 0);
+
+            var graph = new Graph();
+
+            var nodeOne = new Node("One");
+            var nodeTwo = new Node("Two");
+            var nodeThree = new Node("Three");
+            var nodeFour = new Node("Four");
+            var nodeFive = new Node("Five");
+            var nodeSix = new Node("Six");
+            var nodeSeven = new Node("Seven");
+
+
+            graph.nodes.AddRange(new Node[] { nodeOne, nodeTwo, nodeThree, nodeFour, nodeFive, nodeSix, nodeSeven });
+
+            graph.AddConnection(new Edge(nodeOne, nodeTwo, 3));
+            graph.AddConnection(new Edge(nodeOne, nodeThree, 5));
+            graph.AddConnection(new Edge(nodeTwo, nodeThree, 4));
+            graph.AddConnection(new Edge(nodeTwo, nodeFour, 3));
+            graph.AddConnection(new Edge(nodeThree, nodeFive, 2));
+            graph.AddConnection(new Edge(nodeFour, nodeFive, 4));
+            graph.AddConnection(new Edge(nodeOne, nodeSix, 13));
+            graph.AddConnection(new Edge(nodeFive, nodeSix, 3));
+            graph.AddConnection(new Edge(nodeSix, nodeSeven, 2));
+            graph.AddConnection(new Edge(nodeFive, nodeSeven, 1));
+            graph.AddConnection(new Edge(nodeTwo, nodeSeven, 4));
+
+
+            graph.PrintGraph();
+
+            Dijkstra.DijkstraFunc(graph, nodeOne);
+            /*
 
             var graph = new Graph();
 
@@ -56,6 +87,8 @@ namespace GraphsExamples
             {
                 Console.WriteLine(item.Name);
             }
+
+            */
 
             Console.ReadKey();
         }
