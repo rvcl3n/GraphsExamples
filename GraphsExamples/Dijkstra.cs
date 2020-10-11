@@ -58,35 +58,36 @@ namespace GraphsExamples
             printSolution(dist);
         }
 
-        public void DijkstraFunc(Graph graph, Node start)
+        public static void DijkstraFunc(Graph graph, Node start)
         {
             //arrays init
             //int[] distance = new int[graph.NodesCount];
-            var distance = new Dictionary<Node, int>();
+            var nodesDistances = new Dictionary<Node, int>();
             var shortestPathTreeSet = new Dictionary<Node, bool>();
-
-            for (int i = 0; i < graph.NodesCount; ++i)
-            {
-                distance.Add(graph.nodes[i], int.MaxValue); //max value set for each distance
-                shortestPathTreeSet.Add(graph.nodes[i], false); //false for each node
-            }
-
-            distance[start] = 0;
 
             foreach (var node in graph.nodes)
             {
-                Node nearestNode = MinimalDistance(graph.nodes, distance, shortestPathTreeSet);
+                nodesDistances.Add(node, int.MaxValue); //max value set for each distance
+                shortestPathTreeSet.Add(node, false); //false for each node
+            }
 
-                foreach(var node2 in graph.nodes)
+            nodesDistances[start] = 0;
+
+            foreach (var node in graph.nodes)
+            {
+                Node nearestNode = MinimalDistance(graph.nodes, nodesDistances, shortestPathTreeSet);
+                shortestPathTreeSet[nearestNode] = true;
+
+                foreach(var innerNode in graph.nodes)
                 {
-                    if (shortestPathTreeSet[node2] && IsNodesConnected(graph.edges,node2,nearestNode) && distance[node] != int.MaxValue && distance[node] + GetDistance(graph.edges, node2, nearestNode) < distance[node])
+                    if (!shortestPathTreeSet[innerNode] && IsNodesConnected(graph.edges, innerNode, nearestNode) && nodesDistances[node] != int.MaxValue && nodesDistances[node] + GetDistance(graph.edges, innerNode, nearestNode) < nodesDistances[innerNode])
                     {
-                        distance[node] = distance[node] + GetDistance(graph.edges, node2, nearestNode);
+                        nodesDistances[innerNode] = nodesDistances[node] + GetDistance(graph.edges, innerNode, nearestNode);
                     }
                 }
             }
 
-            //ToDo: Print Function
+            Print(nodesDistances, start);
 
         }
 
@@ -133,6 +134,14 @@ namespace GraphsExamples
                 }
             }
             return distance;
+        }
+
+        private static void Print(Dictionary<Node, int> distance, Node startNode)
+        {
+            foreach (var node in distance)
+            {
+                Console.WriteLine($"From {startNode.Name} to {node.Key.Name} - Distance: {node.Value}");
+            }
         }
     }
 }

@@ -15,5 +15,12 @@
             this.Value = 0;
         }
 
+        public Edge(Node nodeA, Node nodeB, int value)
+        {
+            this.NodeA = nodeA;
+            this.NodeB = nodeB;
+            this.Value = value;
+        }
+
     }
 }
