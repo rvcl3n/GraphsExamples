@@ -167,7 +167,7 @@ namespace GraphsExamples.Tests
         }
 
         [TestMethod]
-        public void DijkstraFunc_EqualGraphs_ReturnsAllGraphsNodes()
+        public void DijkstraFunc_EqualGraphsDistancesSums_ReturnsCorrectDistancesSum()
         {
             //Graph init
 
@@ -207,6 +207,49 @@ namespace GraphsExamples.Tests
             //Assert
 
             Assert.AreEqual(sumExpected, sumActual);
+        }
+
+        [TestMethod]
+        public void DijkstraFunc_EqualGraphsDistancesSums_ReturnsIncorrectDistancesSum()
+        {
+            //Graph init
+
+            var graph = new Graph();
+
+            var nodeOne = new Node("One");
+            var nodeTwo = new Node("Two");
+            var nodeThree = new Node("Three");
+            var nodeFour = new Node("Four");
+            var nodeFive = new Node("Five");
+            var nodeSix = new Node("Six");
+            var nodeSeven = new Node("Seven");
+
+
+            graph.nodes.AddRange(new Node[] { nodeOne, nodeTwo, nodeThree, nodeFour, nodeFive, nodeSix, nodeSeven });
+
+            graph.AddConnection(new Edge(nodeOne, nodeTwo, 3));
+            graph.AddConnection(new Edge(nodeOne, nodeThree, 5));
+            graph.AddConnection(new Edge(nodeTwo, nodeThree, 4));
+            graph.AddConnection(new Edge(nodeTwo, nodeFour, 3));
+            graph.AddConnection(new Edge(nodeThree, nodeFive, 2));
+            graph.AddConnection(new Edge(nodeFour, nodeFive, 4));
+            graph.AddConnection(new Edge(nodeOne, nodeSix, 13));
+            graph.AddConnection(new Edge(nodeFive, nodeSix, 3));
+            graph.AddConnection(new Edge(nodeSix, nodeSeven, 2));
+            graph.AddConnection(new Edge(nodeFive, nodeSeven, 1));
+            //graph.AddConnection(new Edge(nodeTwo, nodeSeven, 4)); // Commented one Edge for testing
+
+            //Expected sum init
+
+            int sumExpected = 37;
+
+            //Dijkstra check
+
+            int sumActual = Dijkstra.DijkstraFunc(graph, nodeOne);
+
+            //Assert
+
+            Assert.AreNotEqual(sumExpected, sumActual);
         }
     }
 }
