@@ -19,7 +19,7 @@ namespace GraphsExamples
 
             graph.nodes.AddRange(new Node[] { nodeOne, nodeTwo, nodeThree, nodeFour, nodeFive, nodeSix, nodeSeven });
 
-            graph.AddConnection(new Edge(nodeOne, nodeTwo, 3));
+            graph.AddConnection(new Edge(nodeOne, nodeTwo, -3));
             graph.AddConnection(new Edge(nodeOne, nodeThree, 5));
             graph.AddConnection(new Edge(nodeTwo, nodeThree, 4));
             graph.AddConnection(new Edge(nodeTwo, nodeFour, 3));
@@ -28,13 +28,18 @@ namespace GraphsExamples
             graph.AddConnection(new Edge(nodeOne, nodeSix, 13));
             graph.AddConnection(new Edge(nodeFive, nodeSix, 3));
             graph.AddConnection(new Edge(nodeSix, nodeSeven, 2));
-            graph.AddConnection(new Edge(nodeFive, nodeSeven, 1));
-            graph.AddConnection(new Edge(nodeTwo, nodeSeven, 4));
+            //graph.AddConnection(new Edge(nodeSeven, nodeSix, 2)); //inverse edge
+            graph.AddConnection(new Edge(nodeFive, nodeSeven, -1));
+            graph.AddConnection(new Edge(nodeTwo, nodeSeven, 10));
 
 
             graph.PrintGraph();
 
+            Console.WriteLine("Dijkstra");
             Dijkstra.DijkstraFunc(graph, nodeOne);
+            Console.WriteLine("BellmanFord");
+            BellmanFord.BellmanFordFunc(graph, nodeOne);
+
             /*
 
             var graph = new Graph();
