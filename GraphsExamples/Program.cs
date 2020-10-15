@@ -29,7 +29,7 @@ namespace GraphsExamples
             graph.AddConnection(new Edge(nodeFive, nodeSix, 3));
             graph.AddConnection(new Edge(nodeSix, nodeSeven, 2));
             //graph.AddConnection(new Edge(nodeSeven, nodeSix, 2)); //inverse edge
-            graph.AddConnection(new Edge(nodeFive, nodeSeven, 1));
+            graph.AddConnection(new Edge(nodeFive, nodeSeven, -1));
             graph.AddConnection(new Edge(nodeTwo, nodeSeven, 10));
 
 

@@ -9,8 +9,7 @@ namespace GraphsExamples
         {
             //arrays init
             var nodesDistances = new Dictionary<Node, int>();
-            int verticesCount = graph.NodesCount;
-            int edgesCount = graph.edges.Count;
+            int nodesCount = graph.NodesCount;
 
             foreach (var node in graph.nodes)
             {
@@ -19,18 +18,8 @@ namespace GraphsExamples
 
             nodesDistances[start] = 0;
 
-            for (int i = 1; i <= verticesCount -1 ; ++i)
+            for (int i = 1; i <= nodesCount -1 ; ++i)
             {
-                /*for (int j = 0; j < edgesCount; ++j)
-                {
-                    int u = graph.edge[j].Source;
-                    int v = graph.edge[j].Destination;
-                    int weight = graph.edge[j].Weight;
-
-                    if (distance[u] != int.MaxValue && distance[u] + weight < distance[v])
-                        distance[v] = distance[u] + weight;
-                }*/
-
                 foreach (var edge in graph.edges)
                 {
                     Node a = edge.NodeA;
@@ -44,16 +33,6 @@ namespace GraphsExamples
                         nodesDistances[a] = nodesDistances[b] + weight;
                 }
             }
-
-            /*for (int i = 0; i < edgesCount; ++i)
-            {
-                int u = graph.edge[i].Source;
-                int v = graph.edge[i].Destination;
-                int weight = graph.edge[i].Weight;
-
-                if (distance[u] != int.MaxValue && distance[u] + weight < distance[v])
-                    Console.WriteLine("Graph contains negative weight cycle.");
-            }*/
 
             foreach (var edge in graph.edges)
             {
