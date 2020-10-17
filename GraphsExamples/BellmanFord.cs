@@ -5,7 +5,7 @@ namespace GraphsExamples
 {
     public class BellmanFord
     {
-        public static void BellmanFordFunc(Graph graph, Node start)
+        public static int BellmanFordFunc(Graph graph, Node start)
         {
             //arrays init
             var nodesDistances = new Dictionary<Node, int>();
@@ -48,6 +48,8 @@ namespace GraphsExamples
             }
 
             Print(nodesDistances, start);
+
+            return SumUpDistances(nodesDistances);
         }
 
         private static void Print(Dictionary<Node, int> nodeDistances, Node startNode)
@@ -56,6 +58,18 @@ namespace GraphsExamples
             {
                 Console.WriteLine($"From {startNode.Name} to {node.Key.Name} - Distance: {node.Value}");
             }
+        }
+
+        private static int SumUpDistances(Dictionary<Node, int> nodeDistances)
+        {
+            int sum = 0;
+
+            foreach (var node in nodeDistances)
+            {
+                sum += node.Value;
+            }
+
+            return sum;
         }
     }
 }
